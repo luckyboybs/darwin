@@ -19,7 +19,7 @@ $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := darwin
-PRODUCT_NAME := omni_darwin
+PRODUCT_NAME := twrp_darwin
 PRODUCT_BRAND := SMARTISAN
 PRODUCT_MODEL := DT2002C
 PRODUCT_MANUFACTURER := deltainno
