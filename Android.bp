@@ -15,9 +15,3 @@
 //
 soong_namespace {
 }
-
-cc_library {
-    name: "bootctrl.kona",
-    defaults: ["bootctrl_hal_defaults"],
-    static_libs: ["libgptutils.crosshatch"],
-}
