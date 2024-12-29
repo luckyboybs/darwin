@@ -26,7 +26,10 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 LOCAL_PATH := device/deltainno/darwin
 
 PRODUCT_PACKAGES += \
+    bootctrl.smartisan_sm8250 \
     bootctrl.smartisan_sm8250.recovery \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service \
     android.hardware.boot@1.1-impl-qti.recovery
 
 PRODUCT_PACKAGES += \
@@ -44,3 +47,5 @@ PRODUCT_PACKAGES_ENG += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
+
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
