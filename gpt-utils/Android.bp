@@ -16,7 +16,7 @@
 
 
 cc_library {
-    name: "libgptutils.kona",
+    name: "libgptutils.smartisan_sm8250",
     vendor: true,
     recovery_available: true,
     shared_libs: [

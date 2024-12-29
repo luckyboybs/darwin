@@ -51,9 +51,8 @@ AB_OTA_PARTITIONS += \
     system_ext \
     vbmeta \
     vbmeta_system \
-    vendor \
     recovery \
-
+    
 TW_INCLUDE_REPACKTOOLS := true
 
 # Kernel

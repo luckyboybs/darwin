@@ -26,7 +26,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 LOCAL_PATH := device/deltainno/darwin
 
 PRODUCT_PACKAGES += \
-    bootctrl.kona.recovery \
+    bootctrl.smartisan_sm8250.recovery \
     android.hardware.boot@1.1-impl-qti.recovery
 
 PRODUCT_PACKAGES += \
