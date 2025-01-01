@@ -25,19 +25,29 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 LOCAL_PATH := device/deltainno/darwin
 
+# Boot control HAL
 PRODUCT_PACKAGES += \
     bootctrl.smartisan_sm8250 \
     bootctrl.smartisan_sm8250.recovery \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
     android.hardware.boot@1.1-impl-qti.recovery
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.0-impl-wrapper.recovery \
+    android.hardware.boot@1.0-impl-wrapper \
+    android.hardware.boot@1.0-impl.recovery \
+    bootctrl.$(PRODUCT_PLATFORM) \
+    bootctrl.$(PRODUCT_PLATFORM).recovery \
 
+# fastbootd  
 PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.0-impl-mock
 
 # SHIPPING API
-PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 29
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 
 # qcom decryption
 PRODUCT_PACKAGES += \
@@ -48,4 +58,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
+# OEM otacerts
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(DEVICE_PATH)/security/$(BOARD_VENDOR)1 \
+    $(DEVICE_PATH)/security/$(BOARD_VENDOR)2 \
+    $(DEVICE_PATH)/security/$(BOARD_VENDOR)3 \
+    $(DEVICE_PATH)/security/$(BOARD_VENDOR)4
+
+# Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

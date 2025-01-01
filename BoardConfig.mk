@@ -44,14 +44,8 @@ AB_OTA_PARTITIONS += \
     boot \
     system \
     vendor \
-    dtbo \
-    odm \
-    product \
-    system \
-    system_ext \
     vbmeta \
-    vbmeta_system \
-    recovery \
+    dtbo 
     
 TW_INCLUDE_REPACKTOOLS := true
 
@@ -91,6 +85,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Platform
 TARGET_BOARD_PLATFORM := kona
+
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -137,7 +132,7 @@ PLATFORM_VERSION := 16.1.0
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := darwin
-TARGET_NO_BOOTLOADER := false
+TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Debug
