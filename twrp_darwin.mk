@@ -4,6 +4,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+# Identifier for SoC folder
+COMMON_SOC := sm8250
 
 DEVICE_PATH := device/deltainno/darwin
 
@@ -19,6 +21,9 @@ PRODUCT_NAME := twrp_darwin
 PRODUCT_BRAND := SMARTISAN
 PRODUCT_MODEL := DT2002C
 PRODUCT_MANUFACTURER := deltainno
+
+# Common path for device trees
+COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
 
 # Theme
 TW_STATUS_ICONS_ALIGN := center
