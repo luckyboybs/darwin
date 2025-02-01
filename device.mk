@@ -54,12 +54,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
-# OEM otacerts
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(DEVICE_PATH)/security/$(BOARD_VENDOR)1 \
-    $(DEVICE_PATH)/security/$(BOARD_VENDOR)2 \
-    $(DEVICE_PATH)/security/$(BOARD_VENDOR)3 \
-    $(DEVICE_PATH)/security/$(BOARD_VENDOR)4
-
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

@@ -69,8 +69,8 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/deltainno/darwin
-
 BOARD_INCLUDE_RECOVERY_DTBO := true
+
 #TARGET_KERNEL_CONFIG := darwin_defconfig
 
 # Partitions
