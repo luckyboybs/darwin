@@ -105,3 +105,9 @@ service vibrator-service /vendor/bin/hw/vendor.qti.hardware.vibrator.service
     group root
     disabled
     seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
