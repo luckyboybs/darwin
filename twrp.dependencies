@@ -2,7 +2,7 @@
   {
     "remote": "TeamWin",
     "repository": "android_device_qcom_common",
-    "target_path": "device/deltainno/sm8250-common",
+    "target_path": "device/smartisan/sm8250-common",
     "revision": "android-11"
   }
 ]
