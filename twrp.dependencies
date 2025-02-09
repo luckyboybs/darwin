@@ -1,8 +1,8 @@
 [
   {
-    "remote": "TeamWin",
-    "repository": "android_device_qcom_common",
-    "target_path": "device/smartisan/sm8250-common",
+    "remote": "lly-q",
+    "repository": "device_deltainno_darwin",
+    "target_path": "device/deltainno/darwin",
     "revision": "android-11"
   }
 ]

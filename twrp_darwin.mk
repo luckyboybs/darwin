@@ -9,7 +9,7 @@ COMMON_SOC := sm8250
 
 # Device path for OEM device tree
 #DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
-DEVICE_PATH := device/deltainno/darwin
+#DEVICE_PATH := device/deltainno/darwin
 
 # Inherit from darwin device
 $(call inherit-product, device/deltainno/darwin/device.mk)
@@ -25,7 +25,7 @@ PRODUCT_MODEL := DT2002C
 PRODUCT_MANUFACTURER := deltainno
 
 # Common path for device trees
-COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
+#COMMON_PATH := device/$(PRODUCT_BRAND)/$(COMMON_SOC)-common
 #COMMON_PATH := device/deltainno/$(COMMON_SOC)-common
 
 # Theme
