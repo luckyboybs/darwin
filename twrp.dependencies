@@ -1,8 +1,0 @@
-[
-  {
-    "remote": "lly-q",
-    "repository": "device_deltainno_darwin",
-    "target_path": "device/deltainno/darwin",
-    "revision": "android-11"
-  }
-]
