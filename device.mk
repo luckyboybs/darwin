@@ -24,7 +24,7 @@ PRODUCT_PACKAGES += \
     bootctrl.kona \
     bootctrl.kona.recovery
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+PRODUCT_PACKAGES += \
     bootctrl.kona \
     libgptutils \
     libz \
@@ -36,3 +36,9 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+# fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd \
+    resetprop
