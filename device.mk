@@ -45,7 +45,7 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
+    $(LOCAL_PATH)
 
 # qcom decryption
 PRODUCT_PACKAGES_ENG += \
