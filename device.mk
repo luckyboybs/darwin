@@ -5,6 +5,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+
 LOCAL_PATH := device/deltainno/darwin
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \

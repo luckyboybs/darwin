@@ -34,7 +34,7 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a9
+TARGET_2ND_CPU_VARIANT_RUNTIME := generic
 
 # APEX
 OVERRIDE_TARGET_FLATTEN_APEX := true
@@ -51,7 +51,21 @@ TARGET_SCREEN_DENSITY := 560
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
+BOARD_KERNEL_CMDLINE := \
+                        androidboot.hardware=qcom \ 
+                        androidboot.console=ttyMSM0 \ 
+                        androidboot.memcg=1 \
+                        lpm_levels.sleep_disabled=1 \ 
+                        video=vfb:640x400,bpp=32,memsize=3072000 \
+                        msm_rtb.filter=0x237 \
+                        service_locator.enable=1 \
+                        androidboot.usbcontroller=a600000.dwc3 \
+                        swiotlb=2048 \
+                        loop.max_part=7 \
+                        cgroup.memory=nokmem,nosocket \
+                        reboot=panic_warm \
+                        country.info=chinaxxx \
+                        buildvariant=user
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -86,7 +100,11 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := deltainno_dynamic_partitions
-BOARD_DELTAINNO_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm
+BOARD_DELTAINNO_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    system \
+    system_ext \
+    product \
+    vendor odm
 BOARD_DELTAINNO_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3007426560
 
@@ -111,7 +129,7 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 16.1.0
+PLATFORM_VERSION := 11.0
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
