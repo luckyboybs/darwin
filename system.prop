@@ -1,0 +1,18 @@
+# ADB
+ro.adb.secure=0
+
+# Gatekeeper
+vendor.gatekeeper.disable_spu=true
+
+# Battery Property
+ro.charger.enable_suspend=1
+
+# Timezone
+persist.sys.timezone=Asia/Shanghai
+
+vendor.gatekeeper.disable_spu=true
+
+fbe.metadata.wrappedkey=true
+ro.crypto.volume.filenames_mode=aes-256-cts
+ro.vendor.qti.va_aosp.support=1
+ro.virtual_ab.enabled=true

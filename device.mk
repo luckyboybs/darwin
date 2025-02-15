@@ -51,3 +51,8 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES_ENG += \
     qcom_decrypt \
     qcom_decrypt_fbe
+
+#TWRP
+PRODUCT_COPY_FILES += \
+    device/deltainno/darwin/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
+    device/deltainno/darwin/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml 
