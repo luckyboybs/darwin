@@ -9,6 +9,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_darwin.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_darwin-user \
-    twrp_darwin-userdebug \
     twrp_darwin-eng

@@ -8,6 +8,6 @@
 soong_namespace {
     imports: [
 		"hardware/qcom/bootctrl",
-		"device/qcom/common/gpt-utils",
-	],
+		"device/qcom/common/gpt-utils"
+	]
 }
