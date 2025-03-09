@@ -20,3 +20,6 @@ ro.product.board=kona
 ro.board.platform=kona
 ro.display.series=DT2002C
 ro.product.first_api_level=30
+
+# Reset allocatable space
+ro.dynamic.full_size=9126805504

@@ -182,8 +182,6 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_DEFAULT_BRIGHTNESS := 420
-TW_Y_OFFSET := 104
-TW_H_OFFSET := -104
 TW_INCLUDE_NTFS_3G := true
 TW_USE_TOOLBOX := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.build.version.ota"
