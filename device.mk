@@ -39,11 +39,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
     android.hardware.boot@1.0-impl.recovery
-    
-
-PRODUCT_PACKAGES += \
-    bootctrl.kona \
-    bootctrl.kona.recovery
+    bootctrl.$(PRODUCT_PLATFORM) \
+    bootctrl.$(PRODUCT_PLATFORM).recovery 
 
 PRODUCT_PACKAGES += \
     bootctrl.kona \
@@ -79,4 +76,4 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(DEVICE_PATH)
