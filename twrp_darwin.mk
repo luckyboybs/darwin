@@ -6,8 +6,10 @@
 #
 
 # Inherit from those products. Most specific first.
-# $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk) test注释
-# $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)  test注释
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk) 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)  
+
+DEVICE_PATH := device/deltainno/darwin
 
 # Inherit some common twrp stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)

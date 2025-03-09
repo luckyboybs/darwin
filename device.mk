@@ -8,8 +8,12 @@
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
+# Inherit some common twrp stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
+
 
 LOCAL_PATH := device/deltainno/darwin
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -47,9 +51,8 @@ PRODUCT_PACKAGES += \
     fastbootd \
     resetprop
 
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+# SHIPPING API
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 # qcom decryption
 PRODUCT_PACKAGES_ENG += \
@@ -60,3 +63,7 @@ PRODUCT_PACKAGES_ENG += \
 PRODUCT_COPY_FILES += \
     device/deltainno/darwin/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
     device/deltainno/darwin/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml 
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)

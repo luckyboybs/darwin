@@ -139,6 +139,8 @@ BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 TW_USE_FSCRYPT_POLICY := 1
+TARGET_PROVIDES_KEYMASTER := true       # test 解密
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true  # test 解密
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
@@ -146,7 +148,7 @@ TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_INCLUDE_REPACKTOOLS := true
-
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_HAS_EDL_MODE := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -158,3 +160,5 @@ TW_H_OFFSET := -104
 TW_INCLUDE_NTFS_3G := true
 TW_USE_TOOLBOX := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.build.version.ota"
+TWRP_INCLUDE_LOGCAT := true  # test 启动日志
+TARGET_USES_LOGD := true     # test 启动日志
