@@ -7,7 +7,7 @@
 # Identifier for SoC folder
 #COMMON_SOC := sm8250
 # Device path for OEM device tree
-DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
+DEVICE_PATH := device/$(PRODUCT_MANUFACTURER)/$(PRODUCT_DEVICE)
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk)
 # Configure base.mk
@@ -30,7 +30,7 @@ PRODUCT_RELEASE_NAME := darwin
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := darwin
 PRODUCT_NAME := twrp_darwin
-PRODUCT_BRAND := deltainno
+PRODUCT_BRAND := SMARTISAN
 PRODUCT_MODEL := DT2002C
 PRODUCT_MANUFACTURER := deltainno
 
