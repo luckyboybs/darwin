@@ -1,0 +1,14 @@
+# device/deltainno/darwin/init.recovery.qcom_decrypt.rc
+service qcom_decrypt /system/bin/qcom_decrypt
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service qcom_decrypt_fbe /system/bin/qcom_decrypt_fbe
+    class main
+    user root
+    group root  
+    disabled
+    oneshot

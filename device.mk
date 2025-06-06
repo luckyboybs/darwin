@@ -45,7 +45,8 @@ endif
 # qcom decryption
 PRODUCT_PACKAGES_ENG += \
     qcom_decrypt \
-    qcom_decrypt_fbe
+    qcom_decrypt_fbe \
+    init.recovery.qcom_decrypt.rc
     
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -61,3 +62,8 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # PRODUCT_RELEASE_NAME ro.twrp.device.name
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
+
+# 确保复制预编译文件
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilt/dtb.img:dtb.img \
+    $(DEVICE_PATH)/prebuilt/dtbo.img:dtbo.img
