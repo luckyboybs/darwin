@@ -64,6 +64,6 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
 
 # 确保复制预编译文件
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/dtb.img:dtb.img \
     $(DEVICE_PATH)/prebuilt/dtbo.img:dtbo.img
