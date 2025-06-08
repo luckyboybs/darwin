@@ -43,7 +43,7 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 endif
 
 # qcom decryption
-PRODUCT_PACKAGES_ENG += \
+PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe \
     init.recovery.qcom_decrypt.rc
