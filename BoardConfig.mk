@@ -58,7 +58,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 an
 BOARD_KERNEL_IMAGE_NAME := Image  #kernel
 #BOARD_KERNEL_SEPARATED_DTBO := true  #DTB
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-#BOARD_PREBUILT_DTBIMAGE := device/deltainno/darwin/prebuilt/dtb.img
+BOARD_PREBUILT_DTBIMAGE := device/deltainno/darwin/prebuilt/dtb.img
 #BOARD_PREBUILT_DTBIMAGE := device/deltainno/darwin/prebuilt/dtb
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_PREBUILT_DTBOIMAGE := device/deltainno/darwin/prebuilt/dtbo.img
