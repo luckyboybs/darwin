@@ -52,6 +52,7 @@ AB_OTA_PARTITIONS += \
     super
 
 TW_INCLUDE_REPACKTOOLS := true
+TARGET_NO_KERNEL := false
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
@@ -138,7 +139,7 @@ BOARD_USES_QCOM_FBE_DECRYPTION := true
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true              # 方案1：使用FBEv1（标准加密）
 #TW_INCLUDE_FBE_METADATA_DECRYPT := true    #方案2：使用FBEv2（文件级加密）
-VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+VENDOR_SECURITY_PATCH := 2022-06
 TARGET_PROVIDES_KEYMASTER := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
