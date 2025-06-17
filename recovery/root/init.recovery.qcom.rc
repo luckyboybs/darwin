@@ -29,6 +29,7 @@
 on early-fs
     #write /proc/sys/kernel/sched_lib_name "recovery,magiskboot,Updater,updater,update_engine_sideload"
     write /proc/sys/kernel/sched_lib_mask_force 255
+    start vold
 
 on fs
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
@@ -54,33 +55,26 @@ on fs
     chmod 0664 /dev/ion
     chown system system /dev/ion
     # Mount firmware
-    mkdir /firmware
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+    #mkdir /firmware
+    #mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
     install_keyring
 
 on init
-    stop vendor.qseecomd
-    start vendor.qseecomd
-    start boot-hal-1-1
+    start hwservicemanager
+    setprop crypto.ready 1
+    #stop vendor.qseecomd
+    #start vendor.qseecomd
+    #start boot-hal-1-1
     #强制脚本始终设置补丁程序级别并覆盖自动检测
     setprop prepdecrypt.setpatch true  
-
-on boot
-    setprop sys.usb.config adb
-    exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     
-on property:twrp.modules.loaded=true
+#on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
-    start health-hal-2-1
-    umount /firmware
-
-on property:vendor.sys.listeners.registered=true
-    start keymaster-4-1
-    start gatekeeper-1-0
+    #wait /sys/kernel/boot_adsp/boot
+    #write /sys/kernel/boot_adsp/boot 1
+    #wait /sys/class/power_supply/battery
+    
+    #umount /firmware
 
 service vendor.qseecomd /vendor/bin/qseecomd
     user root
@@ -88,7 +82,28 @@ service vendor.qseecomd /vendor/bin/qseecomd
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-1 /vendor/bin/hw/android.hardware.keymaster@4.1-service-qti
+service hwservicemanager /system/bin/hwservicemanager
+    user root
+    group root
+    disabled
+    onrestart setprop hwservicemanager.ready false
+    seclabel u:r:recovery:s0
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+# keystore is started and stopped on demand by TWRP
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
     user root
     group root
     disabled
@@ -100,8 +115,30 @@ service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qt
     disabled
     seclabel u:r:recovery:s0
        
-service vibrator-service /vendor/bin/hw/vendor.qti.hardware.vibrator.service
+service vibrator-service /vendor/bin/hw/vendor.qti.hardware.vibrator@1.2-service
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
+
+on boot
+    start health-hal-2-0
+    start boot-hal-1-0
+    start vibrator-service
+    setprop sys.usb.config adb
+    #exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
+    #symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+on property:crypto.ready=0
+    stop vendor.qseecomd
+    stop keymaster-4-0
+    stop gatekeeper-1-0
+    stop servicemanager
+
+on property:crypto.ready=1
+    start vendor.qseecomd
+
+on property:vendor.sys.listeners.registered=true
+    start keymaster-4-0
+    start gatekeeper-1-0
+    start servicemanager
