@@ -56,8 +56,9 @@ TARGET_NO_KERNEL := false
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx
-BOARD_KERNEL_IMAGE_NAME := kernel  #kernel
+BOARD_KERNEL_IMAGE_NAME := Image  #kernel
 BOARD_KERNEL_SEPARATED_DTBO := true  #DTB
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 #BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_PREBUILT_DTBIMAGE := device/deltainno/darwin/prebuilt/dtb
@@ -84,18 +85,26 @@ BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 #BOARD_MKBOOTIMG_ARGS += --kernel $(TARGET_PREBUILT_KERNEL)
 #BOARD_MKBOOTIMG_ARGS += --cmdline $(BOARD_KERNEL_CMDLINE)
-BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE)
-BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+#BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE)
+#BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 #BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_DTBO_OFFSET)
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-#TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
-#TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
+TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
+TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
 
 #TARGET_KERNEL_CONFIG := darwin_defconfig
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
+ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := 
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+BOARD_KERNEL_SEPARATED_DTBO := 
+endif
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
@@ -107,9 +116,9 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Dynamic Partition
 BOARD_SUPER_PARTITION_SIZE := 10737418240
-BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9126805504
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product vendor system system_ext odm
+BOARD_SUPER_PARTITION_GROUPS := deltainno_dynamic_partitions
+BOARD_DELTAINNO_DYNAMIC_PARTITIONS_PARTITION_LIST := product vendor system system_ext odm
+BOARD_DELTAINNO_DYNAMIC_PARTITIONS_SIZE := 9126805504
 
 # Platform
 TARGET_BOARD_PLATFORM := kona
@@ -117,7 +126,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 QCOM_BOARD_PLATFORMS += kona
 
 # Kenel dtb
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
