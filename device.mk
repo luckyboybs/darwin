@@ -67,3 +67,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
 #PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/dtb.img:dtb.img \
     $(DEVICE_PATH)/prebuilt/dtbo.img:dtbo.img
+
+# 动态分区 产品级变量
+PRODUCT_USE_DYNAMIC_PARTITIONS = true
