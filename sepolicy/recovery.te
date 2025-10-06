@@ -1,0 +1,2 @@
+# 继承基础恢复策略
+base_type(recovery, domain, "recovery")
