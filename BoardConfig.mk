@@ -89,8 +89,8 @@ BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
-TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
+#TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
+#TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
 
 #TARGET_KERNEL_CONFIG := darwin_defconfig
 # Kernel - prebuilt
