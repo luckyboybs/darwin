@@ -1,2 +1,4 @@
 # 继承基础恢复策略
-base_type(recovery, domain, "recovery")
+recovery_only(`
+  allow kernel block_device:blk_file read;
+')
