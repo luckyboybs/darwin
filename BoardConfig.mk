@@ -54,10 +54,8 @@ TW_INCLUDE_REPACKTOOLS := true
 TARGET_NO_KERNEL := false
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 androidboot.selinux=permissive lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 firmware_class.path=/vendor/firmware_mnt/image loglevel=8 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image  #kernel
-BOARD_KERNEL_SEPARATED_DTBO := true  #DTB
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -69,7 +67,7 @@ BOARD_KERNEL_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_OFFSET := 0x00008000
 #BOARD_KERNEL_SECOND_OFFSET := 0x90000000
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_TAGS_OFFSET := 0x00000100
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_DTB_OFFSET := 0x01f00000
@@ -78,7 +76,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_KERNEL_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
 #BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 #BOARD_MKBOOTIMG_ARGS += --kernel $(TARGET_PREBUILT_KERNEL)
@@ -99,9 +97,10 @@ ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_INCLUDE_DTB_IN_BOOTIMG := 
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_KERNEL_SEPARATED_DTBO := 
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_DTBOIMAGE)
 endif
 
 # Partitions
@@ -187,7 +186,7 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TW_THEME := portrait_hdpi
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 ifeq ($(TW_DEVICE_VERSION),)
-TW_DEVICE_VERSION := 11.0
+TW_DEVICE_VERSION := 10.0
 endif
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -218,8 +217,10 @@ BOARD_SEPOLICY_DIRS += device/deltainno/darwin/sepolicy
 TWRP_EVENT_LOGGING := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
-BOARD_RAMDISK_USE_LZMA := false
 
 # 启用控制台输出
 TW_NO_SCREEN_TIMEOUT := true
+TW_NO_SCREEN_BLANK := true 
+
+TW_SCREEN_BLANK_ON_BOOT := false
 TW_ALWAYS_RMRF := false
