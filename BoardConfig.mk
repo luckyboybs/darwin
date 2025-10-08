@@ -54,7 +54,7 @@ TW_INCLUDE_REPACKTOOLS := true
 TARGET_NO_KERNEL := false
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 androidboot.selinux=permissive lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image  #kernel
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
@@ -81,7 +81,7 @@ BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 #BOARD_MKBOOTIMG_ARGS += --kernel $(TARGET_PREBUILT_KERNEL)
 #BOARD_MKBOOTIMG_ARGS += --cmdline $(BOARD_KERNEL_CMDLINE)
-#BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 #BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_DTBO_OFFSET)
 
 TARGET_KERNEL_ARCH := arm64
@@ -100,8 +100,8 @@ BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 #BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE)
 BOARD_INCLUDE_DTB_IN_BOOTIMG := 
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
-BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_DTBOIMAGE)
+#BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+#BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_DTBOIMAGE)
 BOARD_KERNEL_SEPARATED_DTBO := 
 endif
 
@@ -152,6 +152,8 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
+# 添加此选项支持FBEv2
+TW_USE_FSCRYPT_POLICY := 1
 # Encryption
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
