@@ -56,11 +56,11 @@ TARGET_NO_KERNEL := false
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image  #kernel
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
+#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+#BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_INCLUDE_RECOVERY_DTBO := true
 #BOARD_PREBUILT_DTBOIMAGE := device/deltainno/darwin/prebuilt/dtbo.img
-BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+#BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 #TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 #INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_KERNEL_HEADER_VERSION := 2
@@ -125,7 +125,7 @@ QCOM_BOARD_PLATFORMS += kona
 # Kenel dtb
 
 # 禁用 AVB (Android Verified Boot) 验证
-BOARD_AVB_ENABLE := false
+#BOARD_AVB_ENABLE := false
 # 禁用 dm-verity (设备映射验证)
 #BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 #BOARD_USES_RECOVERY_AS_BOOT := true
@@ -136,7 +136,7 @@ BOARD_AVB_ENABLE := false
 #PRODUCT_SKIP_BOOT_VERITY_CHECK := true
 #PRODUCT_SKIP_BOOT_VERITY := true
 # Verified Boot
-#BOARD_AVB_ENABLE := true
+BOARD_AVB_ENABLE := true
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
@@ -154,7 +154,7 @@ BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true              # 方案1：使用FBEv1（标准加密）
+#TW_INCLUDE_CRYPTO_FBE := true              # 方案1：使用FBEv1（标准加密）
 TW_INCLUDE_FBE_METADATA_DECRYPT := true    #方案2：使用FBEv2（文件级加密）
 VENDOR_SECURITY_PATCH := 2022-06
 TARGET_PROVIDES_KEYMASTER := true
