@@ -214,17 +214,11 @@ TW_BATTERY_SYSFS_WAIT_SECONDS := 5
 TW_BACKUP_EXCLUSIONS := /data/fonts
 
 # SEPolicy 版本兼容性  强制使用 Android 10 的 SEPolicy
-PLATFORM_SEPOLICY_VERSION := 29.0
-BOARD_SEPOLICY_DIRS += device/deltainno/darwin/sepolicy
+#PLATFORM_SEPOLICY_VERSION := 29.0
+#BOARD_SEPOLICY_DIRS += device/deltainno/darwin/sepolicy
 
 # TWRP Debug Flags
 TWRP_EVENT_LOGGING := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
 
-# 启用控制台输出
-TW_NO_SCREEN_TIMEOUT := true
-TW_NO_SCREEN_BLANK := true 
-
-TW_SCREEN_BLANK_ON_BOOT := false
-TW_ALWAYS_RMRF := false
