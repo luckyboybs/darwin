@@ -57,7 +57,7 @@ TARGET_NO_KERNEL := false
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 androidboot.selinux=permissive lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm country.info=chinaxxx buildvariant=user
 BOARD_KERNEL_IMAGE_NAME := Image.gz  #kernel
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_KERNEL_SEPARATED_DTBO := true
+#BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 #BOARD_PREBUILT_DTBOIMAGE := device/deltainno/darwin/prebuilt/dtbo.img
 BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
@@ -86,8 +86,8 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-#TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
-#TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
+TARGET_KERNEL_SOURCE := kernel/deltainno/darwin   # 使用预编译内核无需此配置
+TARGET_KERNEL_CONFIG := darwin_defconfig          # 使用预编译内核无需此配置
 
 #TARGET_KERNEL_CONFIG := darwin_defconfig
 # Kernel - prebuilt
