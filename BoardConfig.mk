@@ -93,7 +93,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 #设备厂商/自定义	非标准扩展变量	恢复镜像和引导镜像生成
 BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 #TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
