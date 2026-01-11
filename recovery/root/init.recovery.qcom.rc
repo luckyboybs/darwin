@@ -77,11 +77,11 @@ on init
     
     #umount /firmware
 
-service vendor.qseecomd /vendor/bin/qseecomd
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
+#service vendor.qseecomd /vendor/bin/qseecomd
+#    user root
+#    group root
+#    disabled
+#    seclabel u:r:recovery:s0
 
 service hwservicemanager /system/bin/hwservicemanager
     user root
@@ -95,6 +95,11 @@ service keystore_auth /system/bin/keystore_auth
     user system
     group root
     disabled
+    seclabel u:r:recovery:s0
+
+service qseecomd /sbin/qseecomd
+    user root
+    group root
     seclabel u:r:recovery:s0
 
 # keystore is started and stopped on demand by TWRP
@@ -129,15 +134,21 @@ on boot
     setprop sys.usb.config adb
     #exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
     #symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
+    symlink /dev/block/platform/7824900.sdhci /dev/block/bootdevice
 
-on property:crypto.ready=0
-    stop vendor.qseecomd
-    stop keymaster-4-1
-    stop gatekeeper-1-0
-    stop servicemanager
+on property:ro.crypto.state=encrypted
+    stop qseecomd
+    start qseecomd
 
-on property:crypto.ready=1
-    start vendor.qseecomd
+#on property:crypto.ready=0
+#    stop vendor.qseecomd
+#    stop keymaster-4-1
+#    stop gatekeeper-1-0
+#    stop servicemanager
+
+#on property:crypto.ready=1
+#    start vendor.qseecomd
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-4-1
