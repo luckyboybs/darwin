@@ -132,10 +132,10 @@ on boot
     start boot-hal-1-0
     start vibrator-service
     setprop sys.usb.config adb
-    #exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
-    #symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
-    symlink /dev/block/platform/7824900.sdhci /dev/block/bootdevice
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    #exec u:r:recovery:s0 -- /sbin/busybox rm -r /dev/block/bootdevice
+    #symlink /dev/block/platform/7824900.sdhci /dev/block/bootdevice
 
 on property:ro.crypto.state=encrypted
     stop qseecomd
